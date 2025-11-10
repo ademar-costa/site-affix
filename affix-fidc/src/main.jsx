@@ -17,6 +17,30 @@ import ContatoPage from './pages/ContatoPage';
 
 // Importe o App.jsx (que será o layout principal)
 import App from './App.jsx';
+// Importe o nosso novo componente
+import { Outlet } from 'react-router-dom';
+// Futuramente, importaremos o Footer aqui também
+import Navbar from './components/Navbar/Navbar'; 
+
+
+function App() {
+  return (
+    <>
+      {/* 2. Substitua o <p> pelo componente */}
+      <Navbar />
+
+      <main>
+        {/* O conteúdo da página (Home, Contato, etc.) é renderizado aqui */}
+        <Outlet />
+      </main>
+
+      {/* Futuramente, o Footer virá aqui */}
+      <p>FOOTER FIXO</p>
+    </>
+  );
+}
+
+export default App;
 
 // Definição das rotas
 // O createBrowserRouter é a forma moderna de definir rotas.
