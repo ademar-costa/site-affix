@@ -1,0 +1,37 @@
+/* 
+    Aqui vamos traduzir sua paleta de cores em Variáveis CSS. Usar variáveis (que começam com --) 
+    é uma prática essencial. Se o cliente decidir mudar o tom de dourado no futuro,
+    você só precisará alterar em um lugar, e o site inteiro será atualizado.
+*/
+
+/* :root é o seletor de mais alto nível (a raiz do documento)
+   É o local padrão para definir variáveis globais. */
+:root {
+  /* === PALETA DE CORES === */
+  /* Usamos os códigos da sua identidade visual */
+  --preto-principal: #161618;
+  --branco-texto: #F2F2F2;
+  --dourado-destaque: #C9A34E;
+  --dourado-secundario: #A66C26;
+
+  /* === FONTES (Exemplo) === */
+  /* Você pode alterar para as fontes da identidade visual.
+     Ex: 'Montserrat', 'Lato', 'Roboto' */
+  --fonte-principal: 'Helvetica', 'Arial', sans-serif;
+}
+
+body {
+  /* Aplicando as variáveis! */
+  background-color: var(--preto-principal);
+  color: var(--branco-texto);
+  font-family: var(--fonte-principal);
+
+  /* Melhora a renderização das fontes em telas de alta definição */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Apenas um exemplo de como usar a variável de destaque */
+h1, h2, h3 {
+  color: var(--dourado-destaque);
+}

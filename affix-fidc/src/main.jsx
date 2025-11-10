@@ -1,19 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-// 1. Importe os utilitários do roteador
+// IMPORTAÇÕES DE ESTILO
+// O Reset deve vir primeiro para que o global.css possa sobrescrevê-lo.
+import './styles/reset.css';
+import './styles/global.css';
+
+// Importe os utilitários do roteador
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-// 2. Importe os componentes das nossas páginas
+// Importe os componentes das nossas páginas
 import HomePage from './pages/HomePage';
 import QuemSomosPage from './pages/QuemSomosPage';
 import SolucoesPage from './pages/SolucoesPage';
 import ContatoPage from './pages/ContatoPage';
 
-// 3. Importe o App.jsx (que será o layout principal)
+// Importe o App.jsx (que será o layout principal)
 import App from './App.jsx';
 
-// 4. Definição das rotas
+// Definição das rotas
 // O createBrowserRouter é a forma moderna de definir rotas.
 const router = createBrowserRouter([
   {
@@ -41,7 +46,7 @@ const router = createBrowserRouter([
   },
 ]);
 
-// 5. Renderize o aplicativo usando o RouterProvider
+// Renderize o aplicativo usando o RouterProvider
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

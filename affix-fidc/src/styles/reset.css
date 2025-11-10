@@ -1,0 +1,45 @@
+/* Remove todos os estilos padrões que os navegadores (Chrome, Firefox, Safari) 
+aplicam (como margens, tamanhos de fonte de títulos, etc.). Isso nos dá controle total sobre o visual.*/
+
+
+/* 1. Remove margens e paddings padrões */
+* {
+  margin: 0;
+  padding: 0;
+  /* 2. Garante que padding e borda não afetem o tamanho final do elemento */
+  box-sizing: border-box; 
+}
+
+/* 3. Define um comportamento de rolagem suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 4. Remove estilos de lista */
+ul, ol {
+  list-style: none;
+}
+
+/* 5. Remove sublinhados padrão de links */
+a {
+  text-decoration: none;
+  color: inherit; /* Faz o link herdar a cor do texto pai */
+}
+
+/* 6. Garante que imagens e vídeos sejam responsivos por padrão */
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 7. Facilita a definição de fontes e alturas de linha */
+body {
+  line-height: 1.5;
+}
+
+/* 8. Remove estilos padrão de botões e inputs */
+input, button, textarea, select {
+  font: inherit; /* Herda a fonte do elemento pai */
+  border: none;
+  background: none;
+}
