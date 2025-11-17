@@ -1,0 +1,84 @@
+/* 1. Container Principal (Mobile First) */
+.hero-container {
+  /* O 'vh' (viewport height) significa % da altura da tela.
+     'min-height' garante que a seção ocupe a tela inteira 
+     (menos a altura do Navbar) se o conteúdo for pequeno.
+     Vamos usar 'padding' por enquanto para dar espaço. */
+  padding: 4rem 1.5rem; /* 64px vertical, 24px lateral */
+  background-color: var(--preto-principal); /* Fundo da seção */
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Centraliza o texto no mobile */
+}
+
+/* 2. Conteúdo Interno */
+.hero-content {
+  max-width: 800px; /* Limita a largura do texto */
+}
+
+/* 3. Título Principal (Headline) */
+.hero-headline {
+  color: var(--dourado-destaque); /* Nosso dourado! */
+  font-size: 2.5rem; /* 40px - Tamanho grande */
+  font-weight: 700;
+  line-height: 1.2; /* Espaçamento entre linhas */
+  margin-bottom: 1rem; /* 16px */
+}
+
+/* 4. Subtítulo */
+.hero-subheadline {
+  font-size: 1.125rem; /* 18px */
+  color: var(--branco-texto);
+  line-height: 1.6;
+  margin-bottom: 2rem; /* 32px - Espaço antes do botão */
+}
+
+/* 5. Botão CTA (Call to Action) */
+.hero-cta-button {
+  display: inline-block; /* Para aplicar padding */
+  padding: 0.8rem 2rem; /* 12.8px vertical, 32px horizontal */
+  
+  background-color: var(--dourado-destaque);
+  color: var(--preto-principal); /* Texto preto para contrastar com o dourado */
+  
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase; /* Caixa alta */
+  letter-spacing: 1px;
+  
+  border-radius: 4px; /* Bordas levemente arredondadas */
+  border: 2px solid var(--dourado-destaque); /* Borda sólida */
+  
+  transition: all 0.3s ease; /* Animação suave */
+  cursor: pointer;
+}
+
+/* 6. Efeito :hover do Botão */
+.hero-cta-button:hover {
+  background-color: transparent; /* Fundo fica transparente */
+  color: var(--dourado-destaque); /* Texto fica dourado */
+}
+
+
+/* 7. === MEDIA QUERY (Responsividade) === */
+/* Para telas maiores (desktops) */
+@media (min-width: 768px) {
+  .hero-container {
+    padding: 6rem 1.5rem; /* Mais espaçamento vertical */
+    text-align: left; /* Alinha o texto à esquerda */
+  }
+
+  .hero-content {
+    /* O texto já está alinhado à esquerda pelo container */
+  }
+
+  .hero-headline {
+    font-size: 3.5rem; /* 56px - Ainda maior no desktop */
+  }
+
+  .hero-subheadline {
+    font-size: 1.25rem; /* 20px */
+  }
+}
