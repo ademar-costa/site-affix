@@ -1,0 +1,96 @@
+/* src/components/Footer/Footer.css */
+
+/* 1. Container Principal */
+.footer-container {
+  background-color: var(--preto-principal);
+  color: var(--branco-texto);
+  padding-top: 3rem; /* 48px - Mais espaço no topo */
+  border-top: 3px solid var(--dourado-secundario);
+}
+
+/* 2. Conteúdo Principal (Mobile First: Coluna) */
+.footer-content {
+  display: flex;
+  flex-direction: column; /* Tudo em coluna no mobile */
+  gap: 2rem; /* Espaço entre as seções */
+  padding: 0 1.5rem; /* 24px de padding lateral */
+  max-width: 1200px; /* Limita a largura máxima */
+  margin: 0 auto; /* Centraliza o conteúdo */
+}
+
+/* 3. Estilos das seções internas */
+.footer-logo-copyright,
+.footer-links,
+.footer-contato {
+  text-align: center; /* Centraliza tudo no mobile */
+}
+
+.footer-logo {
+  color: var(--dourado-destaque);
+  font-size: 1.8rem; /* 28px */
+  margin-bottom: 0.5rem;
+}
+
+.footer-copyright {
+  font-size: 0.8rem; /* 12.8px */
+  color: #aaa; /* Um cinza claro para o copyright */
+}
+
+.footer-links h4,
+.footer-contato h4 {
+  color: var(--dourado-destaque);
+  font-size: 1.1rem; /* 17.6px */
+  margin-bottom: 1rem;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a,
+.footer-contato p {
+  color: var(--branco-texto);
+  font-size: 0.9rem; /* 14.4px */
+}
+
+.footer-links a:hover {
+  color: var(--dourado-destaque);
+  text-decoration: underline;
+}
+
+.footer-contato p {
+  margin-bottom: 0.3rem;
+}
+
+/* 4. Barra Inferior */
+.footer-bottom-bar {
+  border-top: 1px solid #333; /* Separador cinza escuro */
+  margin-top: 2rem;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+/* 5. === MEDIA QUERY (Responsividade) === */
+/* Para telas de tablet e maiores... */
+@media (min-width: 768px) {
+
+  /* 5.1. Alinha o conteúdo principal em linha! */
+  .footer-content {
+    flex-direction: row; /* Alinha lado a lado */
+    justify-content: space-between; /* Distribui o espaço */
+    text-align: left; /* Alinha o texto à esquerda */
+  }
+
+  .footer-logo-copyright,
+  .footer-links,
+  .footer-contato {
+    text-align: left; /* Alinha o texto das seções à esquerda */
+    flex: 1; /* Faz com que cada coluna ocupe espaço igual */
+  }
+
+  .footer-logo-copyright {
+    flex: 1.5; /* Damos um pouco mais de espaço para a logo */
+  }
+}

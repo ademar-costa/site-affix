@@ -1,76 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-// IMPORTAÇÕES DE ESTILO
-// O Reset deve vir primeiro para que o global.css possa sobrescrevê-lo.
+/* === ESTILOS GLOBAIS === */
 import './styles/reset.css';
 import './styles/global.css';
 
-// Importe os utilitários do roteador
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
-// Importe os componentes das nossas páginas
+/* === PÁGINAS === */
 import HomePage from './pages/HomePage';
 import QuemSomosPage from './pages/QuemSomosPage';
 import SolucoesPage from './pages/SolucoesPage';
 import ContatoPage from './pages/ContatoPage';
 
-// Importe o App.jsx (que será o layout principal)
+/* === LAYOUT PRINCIPAL === */
+// Aqui nós IMPORTAMOS o App.jsx, mas não o definimos.
 import App from './App.jsx';
-// Importe o nosso novo componente
-import { Outlet } from 'react-router-dom';
-// Futuramente, importaremos o Footer aqui também
-import Navbar from './components/Navbar/Navbar'; 
 
-
-function App() {
-  return (
-    <>
-      {/* 2. Substitua o <p> pelo componente */}
-      <Navbar />
-
-      <main>
-        {/* O conteúdo da página (Home, Contato, etc.) é renderizado aqui */}
-        <Outlet />
-      </main>
-
-      {/* Futuramente, o Footer virá aqui */}
-      <p>FOOTER FIXO</p>
-    </>
-  );
-}
-
-export default App;
-
-// Definição das rotas
-// O createBrowserRouter é a forma moderna de definir rotas.
+/* === DEFINIÇÃO DAS ROTAS === */
 const router = createBrowserRouter([
   {
-    path: '/',         // URL raiz do site
-    element: <App />,  // O "casco" do site (onde o Navbar e Footer ficarão)
-    // 'children' define as páginas que serão renderizadas DENTRO do <App />
+    path: '/',
+    element: <App />, // O App é o "casco"
     children: [
-      {
-        path: '/',     // Exatamente em '/'
-        element: <HomePage />,
-      },
-      {
-        path: '/quem-somos', // Em '/quem-somos'
-        element: <QuemSomosPage />,
-      },
-      {
-        path: '/solucoes',   // Em '/solucoes'
-        element: <SolucoesPage />,
-      },
-      {
-        path: '/contato',    // Em '/contato'
-        element: <ContatoPage />,
-      },
+      // As páginas são renderizadas dentro do "casco"
+      { path: '/', element: <HomePage /> },
+      { path: '/quem-somos', element: <QuemSomosPage /> },
+      { path: '/solucoes', element: <SolucoesPage /> },
+      { path: '/contato', element: <ContatoPage /> },
     ],
   },
 ]);
 
-// Renderize o aplicativo usando o RouterProvider
+// /* === RENDERIZAÇÃO o aplicativo usando o RouterProvider === */
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

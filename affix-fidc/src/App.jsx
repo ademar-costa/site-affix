@@ -1,11 +1,14 @@
 // 1. Importe o 'Outlet' do react-router-dom
 import { Outlet } from 'react-router-dom';
 
+import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer';
+
+// A FUNÇÃO APP É DEFINIDA AQUI!
 function App() {
   return (
     <>
-      {/* Futuramente, o Navbar virá aqui */}
-      <p>NAVBAR FIXO</p>
+      <Navbar />
 
       <main>
         {/* O <Outlet /> é o espaço reservado onde o React Router
@@ -15,8 +18,7 @@ function App() {
         <Outlet />
       </main>
 
-      {/* Futuramente, o Footer virá aqui */}
-      <p>FOOTER FIXO</p>
+      <Footer />
     </>
   );
 }
