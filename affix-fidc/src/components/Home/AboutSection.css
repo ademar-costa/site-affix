@@ -1,0 +1,113 @@
+/* 1. Container Principal (Mobile First) */
+.about-container {
+  /* !! MUDANÇA DE COR !! */
+  background-color: var(--branco-texto); /* Fundo branco */
+  color: var(--preto-principal); /* Texto preto */
+  padding: 4rem 1.5rem; /* 64px vertical, 24px lateral */
+}
+
+/* 2. Grid (Será usado no desktop) */
+.about-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 3. Conteúdo de Texto (Mobile) */
+.about-content {
+  text-align: center; /* Centralizado no mobile */
+  margin-bottom: 3rem; /* Espaço antes do visual no mobile */
+}
+
+.about-tagline {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--dourado-secundario); /* Dourado mais escuro */
+  margin-bottom: 0.5rem;
+}
+
+.about-title {
+  font-size: 2rem; /* 32px */
+  font-weight: 700;
+  line-height: 1.3;
+  /* !! COR DO TÍTULO !! */
+  color: var(--preto-principal); /* Título preto sobre fundo branco */
+  margin-bottom: 1.5rem;
+}
+
+.about-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #555; /* Cinza escuro para o texto corrido */
+  margin-bottom: 1rem;
+}
+
+/* 4. Botão CTA (Versão "Vazada") */
+.about-cta-button {
+  display: inline-block;
+  padding: 0.7rem 1.8rem;
+  
+  /* Botão "vazado" */
+  background-color: transparent;
+  border: 2px solid var(--dourado-secundario);
+  color: var(--dourado-secundario);
+  
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.about-cta-button:hover {
+  background-color: var(--dourado-secundario);
+  color: var(--branco-texto);
+}
+
+/* 5. Placeholder Visual (Mobile) */
+.visual-placeholder {
+  width: 100%;
+  height: 300px; /* Altura fixa para o placeholder */
+  background-color: #e0e0e0; /* Cinza claro */
+  border-radius: 8px;
+  
+  /* Centraliza o texto de exemplo (remover depois) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #999;
+  font-style: italic;
+}
+.visual-placeholder::after {
+  content: 'Visual (Imagem/Gráfico)';
+}
+
+
+/* 6. === MEDIA QUERY (Responsividade) === */
+/* Para telas de tablet e maiores... */
+@media (min-width: 768px) {
+  
+  /* 6.1. Ativa o Grid de 2 Colunas */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 colunas de tamanho igual */
+    gap: 3rem; /* Espaço entre as colunas */
+    align-items: center; /* Alinha verticalmente */
+  }
+
+  /* 6.2. Ajusta o conteúdo de texto */
+  .about-content {
+    text-align: left; /* Alinhado à esquerda no desktop */
+    margin-bottom: 0;
+  }
+
+  .about-title {
+    font-size: 2.5rem; /* 40px */
+  }
+}
