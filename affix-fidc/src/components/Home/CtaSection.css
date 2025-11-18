@@ -1,0 +1,66 @@
+/* 1. Container Principal */
+.cta-container {
+  /* Retorna ao fundo escuro */
+  background-color: var(--preto-principal);
+  /* Podemos usar o dourado secundário para a borda 
+     para separar da seção de parceiros e do footer */
+  border-top: 2px solid var(--dourado-secundario);
+  border-bottom: 2px solid var(--dourado-secundario);
+  padding: 5rem 1.5rem; /* 80px vertical, 24px lateral */
+  text-align: center;
+}
+
+/* 2. Conteúdo */
+.cta-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* 3. Título */
+.cta-title {
+  color: var(--dourado-destaque);
+  font-size: 2.5rem; /* 40px */
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+/* 4. Subtítulo */
+.cta-subtitle {
+  font-size: 1.125rem; /* 18px */
+  color: var(--branco-texto);
+  line-height: 1.6;
+  margin-bottom: 2.5rem; /* 40px */
+}
+
+/* 5. Botão CTA (Estilo do Hero) */
+.cta-button {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background-color: var(--dourado-destaque);
+  color: var(--preto-principal);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  border: 2px solid var(--dourado-destaque);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background-color: transparent;
+  color: var(--dourado-destaque);
+}
+
+/* 6. Responsividade */
+@media (min-width: 768px) {
+  .cta-title {
+    font-size: 3rem; /* 48px */
+  }
+
+  .cta-subtitle {
+    font-size: 1.25rem; /* 20px */
+  }
+}
