@@ -1,13 +1,16 @@
 import React from 'react';
 import HeroSection from '../components/Home/HeroSection';
-import AboutSection from '../components/Home/AboutSection'; 
+import AboutSection from '../components/Home/AboutSection';
+// 1. Importe a nova seção
+import SolutionsSection from '../components/Home/SolutionsSection';
 
 function HomePage() {
   return (
     <>
       <HeroSection />
-      {/* 2. Renderize a nova seção */}
       <AboutSection />
+      {/* 2. Renderize a nova seção */}
+      <SolutionsSection />
     </>
   );
 }

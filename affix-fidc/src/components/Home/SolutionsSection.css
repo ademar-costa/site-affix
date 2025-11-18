@@ -1,0 +1,145 @@
+/* 1. Container Principal */
+.solutions-container {
+  background-color: var(--preto-principal);
+  color: var(--branco-texto);
+  padding: 4rem 1.5rem; /* 64px vertical, 24px lateral */
+}
+
+/* 2. Cabeçalho da Seção */
+.solutions-header {
+  text-align: center;
+  margin-bottom: 3rem; /* 48px */
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.solutions-tagline {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--dourado-destaque);
+  margin-bottom: 0.5rem;
+}
+
+.solutions-title {
+  font-size: 2rem; /* 32px */
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--dourado-destaque);
+  margin-bottom: 1rem;
+}
+
+.solutions-subtitle {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ccc; /* Cinza claro */
+}
+
+/* 3. Grid dos Cards (Mobile First: 1 coluna) */
+.solutions-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 coluna por padrão */
+  gap: 1.5rem; /* 24px de espaço entre os cards */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 4. Estilo do Card Individual */
+.solution-card {
+  /* Usamos um preto um pouco mais claro para o card 
+     se destacar do fundo da seção */
+  background-color: #1f1f21;
+  padding: 2rem 1.5rem; /* 32px vertical, 24px horizontal */
+  border-radius: 8px;
+  border-top: 4px solid var(--dourado-secundario); /* Destaque dourado */
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.solution-card:hover {
+  transform: translateY(-5px); /* Efeito de "levantar" */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.solution-icon {
+  font-size: 2.5rem;
+  color: var(--dourado-destaque);
+  margin-bottom: 1rem;
+  /* Placeholder - pode ser trocado por um ícone SVG */
+  font-weight: bold;
+}
+
+.solution-card-title {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 600;
+  color: var(--branco-texto);
+  margin-bottom: 0.75rem;
+}
+
+.solution-card-description {
+  font-size: 0.9rem; /* 14.4px */
+  color: #ccc;
+  line-height: 1.6;
+}
+
+/* 5. Botão CTA Principal */
+.solutions-cta-container {
+  text-align: center;
+  margin-top: 3rem; /* Espaço acima do botão */
+}
+
+/* Reutilizando um estilo similar ao botão do Hero */
+.solutions-main-cta {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background-color: var(--dourado-destaque);
+  color: var(--preto-principal);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  border: 2px solid var(--dourado-destaque);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.solutions-main-cta:hover {
+  background-color: transparent;
+  color: var(--dourado-destaque);
+}
+
+
+/* 6. === MEDIA QUERIES (Responsividade) === */
+
+/* Telas de tablet (768px ou mais) */
+@media (min-width: 768px) {
+  .solutions-title {
+    font-size: 2.5rem; /* 40px */
+  }
+
+  .solutions-subtitle {
+    font-size: 1.125rem; /* 18px */
+  }
+
+  .solutions-grid {
+    /* Em tablets, usamos 2 colunas */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Telas de desktop (1024px ou mais) */
+@media (min-width: 1024px) {
+  .solutions-grid {
+    /* Em desktops, usamos 3 colunas */
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .solution-card {
+    /* Podemos alinhar à esquerda no desktop se preferir */
+    text-align: left;
+  }
+}
