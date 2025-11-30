@@ -1,0 +1,117 @@
+
+/* -- Reutilizando estilos base de cabeçalho (similar à Quem Somos) -- */
+.page-header {
+  background-color: var(--preto-principal);
+  color: var(--branco-texto);
+  padding: 6rem 1.5rem 3rem;
+  text-align: center;
+  border-bottom: 2px solid var(--dourado-secundario);
+}
+
+.page-title {
+  font-size: 2.5rem;
+  color: var(--dourado-destaque);
+  margin-bottom: 1rem;
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  color: #ccc;
+}
+
+/* -- Lista de Serviços -- */
+.solutions-list {
+  background-color: var(--branco-texto);
+  color: var(--preto-principal);
+  padding: 4rem 1.5rem;
+}
+
+.solutions-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem; /* Espaço grande entre cada serviço */
+}
+
+/* -- Item de Serviço Individual -- */
+.service-item {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile: 1 coluna */
+  gap: 2rem;
+  align-items: center;
+  
+  /* Adiciona uma borda sutil embaixo de cada item, exceto o último */
+  padding-bottom: 4rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.service-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* -- Conteúdo de Texto do Serviço -- */
+.service-text h2 {
+  font-size: 1.8rem;
+  color: var(--dourado-secundario);
+  margin-bottom: 1rem;
+}
+
+.service-text p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.service-features {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.service-features li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+  font-weight: 600;
+  color: #333;
+}
+
+/* O "bullet point" dourado antes de cada item da lista */
+.service-features li::before {
+  content: '✔';
+  color: var(--dourado-destaque);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+/* -- Visual do Serviço (Placeholder) -- */
+.service-visual {
+  background-color: #f0f0f0;
+  height: 300px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #999;
+  font-style: italic;
+  border: 1px solid #ddd;
+}
+
+/* -- Responsividade (Desktop) -- */
+@media (min-width: 768px) {
+  .service-item {
+    grid-template-columns: 1fr 1fr; /* 2 colunas */
+    gap: 4rem;
+  }
+
+  /* Truque para inverter a ordem (Zigue-Zague) nos itens pares */
+  /* O visual vai para a esquerda, texto para a direita */
+  .service-item.reverse .service-visual {
+    order: -1; 
+  }
+}
