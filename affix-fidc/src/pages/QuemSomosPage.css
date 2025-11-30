@@ -1,0 +1,86 @@
+/* 1. Cabeçalho da Página (Banner) */
+.page-header {
+  background-color: var(--preto-principal);
+  color: var(--branco-texto);
+  padding: 6rem 1.5rem 3rem; /* Espaço maior no topo para compensar o Navbar fixo */
+  text-align: center;
+  border-bottom: 2px solid var(--dourado-secundario);
+}
+
+.page-title {
+  font-size: 2.5rem;
+  color: var(--dourado-destaque);
+  margin-bottom: 1rem;
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  color: #ccc;
+}
+
+/* 2. Conteúdo Principal (Texto) */
+.content-section {
+  background-color: var(--branco-texto);
+  color: var(--preto-principal);
+  padding: 4rem 1.5rem;
+}
+
+.content-container {
+  max-width: 900px; /* Largura de leitura confortável */
+  margin: 0 auto;
+}
+
+.content-text h2 {
+  font-size: 1.8rem;
+  color: var(--dourado-secundario);
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+}
+
+.content-text h2:first-child {
+  margin-top: 0;
+}
+
+.content-text p {
+  font-size: 1.1rem;
+  line-height: 1.8; /* Bom espaçamento para leitura */
+  margin-bottom: 1.5rem;
+  color: #444;
+}
+
+/* 3. Grid de Missão, Visão e Valores */
+.values-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 coluna no mobile */
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.value-card {
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--dourado-destaque);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.value-card h3 {
+  font-size: 1.4rem;
+  color: var(--preto-principal);
+  margin-bottom: 1rem;
+}
+
+.value-card p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+  .values-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas no desktop */
+  }
+}
