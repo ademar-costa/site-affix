@@ -1,0 +1,171 @@
+/* -- Reutilizando o cabeçalho -- */
+.page-header {
+  background-color: var(--preto-principal);
+  color: var(--branco-texto);
+  padding: 6rem 1.5rem 3rem;
+  text-align: center;
+  border-bottom: 2px solid var(--dourado-secundario);
+}
+
+.page-title {
+  font-size: 2.5rem;
+  color: var(--dourado-destaque);
+  margin-bottom: 1rem;
+}
+
+/* -- Container Principal -- */
+.contact-section {
+  background-color: var(--branco-texto);
+  color: var(--preto-principal);
+  padding: 4rem 1.5rem;
+}
+
+.contact-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile: 1 coluna */
+  gap: 3rem;
+}
+
+/* -- Coluna 1: Informações e WhatsApp -- */
+.contact-info-col h2 {
+  font-size: 1.8rem;
+  color: var(--preto-principal);
+  margin-bottom: 1.5rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.info-icon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  color: var(--dourado-destaque);
+}
+
+.info-content h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.info-content p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Caixa de Destaque do WhatsApp */
+.whatsapp-box {
+  background-color: #e8f5e9; /* Fundo verde bem clarinho */
+  border: 1px solid #c8e6c9;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.whatsapp-box h3 {
+  color: #2e7d32; /* Verde escuro */
+  margin-bottom: 0.5rem;
+}
+
+.whatsapp-box p {
+  margin-bottom: 1.5rem;
+  color: #444;
+}
+
+.whatsapp-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #25D366; /* Verde Oficial do WhatsApp */
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 50px; /* Botão arredondado */
+  font-weight: bold;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.whatsapp-button:hover {
+  transform: scale(1.05); /* Aumenta levemente */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* -- Coluna 2: Formulário -- */
+.contact-form-col {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
+}
+
+.contact-form-col h2 {
+  font-size: 1.8rem;
+  color: var(--preto-principal);
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #fafafa;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--dourado-destaque); /* Foco Dourado */
+  background-color: #fff;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--preto-principal);
+  color: var(--dourado-destaque);
+  border: 2px solid var(--preto-principal);
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.submit-button:hover {
+  background-color: transparent;
+  color: var(--preto-principal);
+}
+
+/* Responsividade Desktop */
+@media (min-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr 1.2fr; /* Coluna do form um pouco maior */
+    gap: 4rem;
+  }
+}

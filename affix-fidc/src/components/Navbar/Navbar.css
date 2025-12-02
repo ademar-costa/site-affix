@@ -1,105 +1,125 @@
-
-/* 1. Estilo do Container Principal (Mobile First) */
+/* 1. Container Principal */
 .navbar-container {
-  display: flex;
-  justify-content: space-between; /* Logo de um lado, toggle do outro */
-  align-items: center;
-  padding: 1rem 1.5rem; /* 16px vertical, 24px horizontal */
-  background-color: var(--preto-principal); /* Cor de fundo da navbar */
-  border-bottom: 2px solid var(--dourado-secundario); /* Linha dourada sutil */
-  position: relative; /* Necessário para o menu dropdown */
-  min-height: 70px;
-}
-
-/* 2. Estilo da Logo */
-.navbar-logo a {
-  font-size: 1.5rem; /* 24px */
-  font-weight: bold;
-  color: var(--dourado-destaque);
-  letter-spacing: 1px;
-}
-
-/* 3. Estilo do Botão Toggle (Hambúrguer) */
-.navbar-toggle {
-  display: block; /* Visível no mobile */
-  font-size: 1.8rem; /* Tamanho do ícone '☰' */
-  color: var(--branco-texto);
-  cursor: pointer;
-  z-index: 1001; /* Fica acima do menu */
-}
-
-/* 4. Estilos dos Links de Navegação (Mobile - Escondido por padrão) */
-.navbar-links {
-  /* O menu fica "fora" da tela */
-  position: absolute;
+  /* FIXAR NO TOPO */
+  position: fixed;
   top: 0;
-  left: -100%; /* Começa escondido à esquerda */
-  width: 70%; /* Ocupa 70% da tela ao abrir */
-  height: 100vh; /* Altura total da tela */
-  background-color: var(--preto-principal);
-  
-  display: flex;
-  justify-content: center;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Garante que fique acima de tudo */
+
+  /* LAYOUT PARA CENTRALIZAR */
+  display: grid;
+  /* Cria 3 colunas: 
+     1. Tamanho da Logo 
+     2. Espaço Flexível (Links) 
+     3. Tamanho do Toggle (Mobile) ou Vazio */
+  grid-template-columns: auto 1fr auto;
   align-items: center;
+
+  padding: 1rem 1.5rem;
   
-  transition: left 0.3s ease-in-out; /* Animação suave */
-  z-index: 1000; /* Fica acima do conteúdo da página */
+  /* Estado Inicial (Topo da página) */
+  background-color: transparent; /* Fundo transparente inicialmente */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil */
+  transition: all 0.3s ease; /* Animação suave na transição */
 }
 
-/* 4.1. Classe 'active' que o JavaScript adiciona */
-.navbar-links.active {
-  left: 0; /* Puxa o menu para dentro da tela */
+/* 2. Logo */
+.logo-image {
+  height: 50px;
+  display: block;
+  /* Garante que a transição da logo seja suave se o tamanho mudar */
+  transition: all 0.3s ease;
 }
 
+/* 3. Links de Navegação (Desktop) */
 .navbar-links ul {
   display: flex;
-  flex-direction: column; /* Links em coluna no mobile */
-  text-align: center;
-}
-
-.navbar-links li {
-  margin: 1.5rem 0; /* Espaçamento vertical grande */
+  /* CENTRALIZA OS LINKS NA TELA */
+  justify-content: center; 
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar-links a {
-  font-size: 1.25rem; /* 20px */
-  font-weight: 600;
-  color: var(--branco-texto);
-  transition: color 0.2s;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--branco-texto); /* Texto Branco no início */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
 }
 
 .navbar-links a:hover {
   color: var(--dourado-destaque);
 }
 
-/* 5. === MEDIA QUERY (A MÁGICA DA RESPONSIVIDADE) === */
-/* Quando a tela for 768px OU MAIOR... */
-@media (min-width: 768px) {
-  
-  /* 5.1. Esconda o botão hambúrguer */
-  .navbar-toggle {
-    display: none;
+/* 4. Botão Toggle (Mobile) */
+.navbar-toggle {
+  display: none; /* Escondido no Desktop */
+  font-size: 1.8rem;
+  color: var(--branco-texto);
+  cursor: pointer;
+}
+
+/* === ESTADO SCROLLED (Quando rolar a página) === */
+.navbar-container.scrolled {
+  background-color: #ffffff; /* Fundo Branco */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Sombra suave */
+  border-bottom: none;
+  padding: 0.8rem 1.5rem; /* Navbar fica um pouco mais compacta */
+}
+
+/* Muda a cor dos links para PRETO quando scrollar */
+.navbar-container.scrolled .navbar-links a {
+  color: var(--preto-principal);
+}
+.navbar-container.scrolled .navbar-links a:hover {
+  color: var(--dourado-secundario);
+}
+
+/* Muda a cor do botão hambúrguer para PRETO */
+.navbar-container.scrolled .navbar-toggle {
+  color: var(--preto-principal);
+}
+
+
+/* === RESPONSIVIDADE (Mobile) === */
+@media (max-width: 768px) {
+  .navbar-container {
+    display: flex; /* Volta para Flex no mobile para facilitar */
+    justify-content: space-between;
   }
 
-  /* 5.2. Mostre o menu de links */
+  .navbar-toggle {
+    display: block; /* Mostra o botão */
+  }
+
   .navbar-links {
-    position: static; /* Não é mais absoluto */
-    left: 0; /* Reseta a posição */
-    width: auto; /* Largura automática */
-    height: auto; /* Altura automática */
-    background-color: transparent; /* Sem fundo */
-    transition: none; /* Sem animação */
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100vh;
+    background-color: var(--preto-principal); /* Menu mobile continua escuro */
+    flex-direction: column;
+    justify-content: center;
+    transition: left 0.3s ease-in-out;
+    padding-top: 0;
+  }
+
+  .navbar-links.active {
+    left: 0;
   }
 
   .navbar-links ul {
-    flex-direction: row; /* Links em linha no desktop! */
+    flex-direction: column;
+    gap: 2rem;
   }
 
-  .navbar-links li {
-    margin: 0 1rem; /* Espaçamento horizontal */
-  }
-
-  .navbar-links a {
-    font-size: 1rem; /* Tamanho de fonte normal */
+  /* No mobile, os links continuam brancos pois o fundo do menu é preto */
+  .navbar-container.scrolled .navbar-links a {
+    color: var(--branco-texto);
   }
 }

@@ -1,91 +1,84 @@
-/* 1. Container Principal */
+
 .partners-container {
-  background-color: var(--branco-texto); /* Fundo claro */
-  color: var(--preto-principal);
-  padding: 4rem 0; /* 64px vertical, 0 lateral (o scroller vai de ponta a ponta) */
+  background-color: var(--branco-texto);
+  padding: 4rem 0;
+  overflow: hidden; /* Garante que nada vaze */
 }
 
-/* 2. Título da Seção */
 .partners-title {
-  font-size: 1.5rem; /* 24px */
+  font-size: 1.5rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #888; /* Um cinza médio para o título */
+  color: #888;
   text-align: center;
   margin-bottom: 3rem;
 }
 
-/* 3. O Scroller (A "Janela") */
 .partners-scroller {
-  /* overflow: hidden é essencial! Esconde o que está fora da "janela" */
   overflow: hidden;
-  
-  /* Criamos uma "máscara" (fade) nas laterais para 
-     os logos desaparecerem suavemente */
-  -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
-  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+  /* Máscara para suavizar as bordas laterais */
+  -webkit-mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+  mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
 }
 
-/* 4. O Track (A "Esteira" que se move) */
 .partners-track {
   display: flex;
-  /* Largura total: (Nº de logos + duplicatas) * (largura de cada logo)
-     Neste caso, 12 logos. */
-  width: calc(200px * 12); /* 200px por logo (exemplo) */
-  gap: 2rem; /* 32px de espaço entre os logos */
-
-  /* A MÁGICA: Animação */
-  /* 'scroll' é o nome da animação (vamos definir abaixo)
-     '30s' é a duração (ajuste para mais rápido/lento)
-     'linear' significa velocidade constante
-     'infinite' significa que repete para sempre
-  */
-  animation: scroll 30s linear infinite;
+  gap: 3rem; /* Espaço entre os logos */
+  width: max-content; /* Largura se adapta ao conteúdo */
+  
+  /* Animação ajustada */
+  animation: scroll 40s linear infinite;
 }
 
-/* 5. Pausar a animação ao passar o mouse */
 .partners-scroller:hover .partners-track {
   animation-play-state: paused;
 }
 
-/* 6. O Logo Individual */
-.partner-logo {
-  width: 200px; /* Largura fixa do logo */
+/* Container de CADA logo */
+.partner-item {
+  width: 160px; /* Largura fixa para padronizar */
   height: 80px; /* Altura fixa */
-  
-  /* Placeholder para o logo */
-  background-color: #e0e0e0;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  
   display: flex;
-  justify-content: center;
   align-items: center;
-  color: #777;
-  font-weight: 600;
-  font-size: 1rem;
+  justify-content: center;
 }
 
-/* 7. === A Animação (Keyframes) === */
+/* A Imagem do Logo em si */
+.partner-item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Garante que a imagem não distorça */
+  
+  /* Efeito Visual: Grayscale (Preto e Branco) */
+  filter: grayscale(100%);
+  opacity: 0.6; /* Levemente transparente */
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Quando passar o mouse, fica colorido e opaco */
+.partner-item img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.1); /* Leve zoom */
+}
+
+/* --- CÁLCULO DA ANIMAÇÃO --- 
+   Temos 8 logos.
+   Largura aproximada de cada item + gap = ~200px.
+   8 itens * 200px = ~1600px.
+   Precisamos mover exatamente a metade (um conjunto inteiro de logos).
+*/
 @keyframes scroll {
-  /* Início: Posição 0 */
-  from {
-    transform: translateX(0);
-  }
-  /* Fim: Posição (metade da largura total do track)
-     Se o track tem 12 logos de 200px + 11 vãos de 2rem (32px),
-     a largura total é ~2752px. Metade é ~1376px.
-     Vamos usar um valor que com certeza é a metade: */
   to {
-    /* (Largura de 1 logo + 1 gap) * 6 (Nº de logos originais) */
-    transform: translateX(calc(-200px * 6 - 2rem * 6));
+    /* Move para a esquerda o tamanho exato de (100% / 2) porque duplicamos a lista */
+    transform: translateX(-50%);
   }
 }
 
-/* 8. Responsividade (apenas para o título) */
 @media (min-width: 768px) {
   .partners-title {
-    font-size: 2rem; /* 32px */
+    font-size: 2rem;
   }
 }

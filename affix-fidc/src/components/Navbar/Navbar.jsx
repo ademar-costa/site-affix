@@ -2,43 +2,68 @@
 // pois ele muda drasticamente de um "menu hambúrguer" (no celular)
 // para um menu horizontal (no desktop).
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './Navbar.css'; // Importando nossos estilos CSS
+import './Navbar.css';
+
+// Importe as duas versões da logo
+import logoBranca from '../../assets/logo-grupo-affix-branco.png';  // Sua logo atual (branca)
+import logoPreta from '../../assets/logo-grupo-affix-preta.png';  // A nova logo (preta)
 
 function Navbar() {
-  // 'menuAberto' é o nosso estado. 'setMenuAberto' é a função que o altera.
-  // Começa como 'false' (menu fechado).
   const [menuAberto, setMenuAberto] = useState(false);
+  const [scrolled, setScrolled] = useState(false); // Estado para saber se rolou a página
 
-  // Esta função será chamada pelo botão 'hambúrguer' ou pelo 'X'.
-  // Ela inverte o valor de 'menuAberto'.
   const toggleMenu = () => {
     setMenuAberto(!menuAberto);
   };
 
+  // Efeito para detectar o scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      // Se rolou mais de 50px, ativa o efeito
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Limpeza do evento ao sair da página
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="navbar-container">
-      {/* 1. Logo (que também é um link para a Home) */}
+    // Adicionamos a classe 'scrolled' se o estado for true
+    <header className={`navbar-container ${scrolled ? 'scrolled' : ''}`}>
+      
+      {/* 1. Logo */}
       <div className="navbar-logo">
-        <Link to="/">Affix FIDC</Link>
+        <Link to="/">
+          {/* Troca a imagem dinamicamente: Se rolou, usa a PRETA, senão a BRANCA */}
+          <img 
+            src={scrolled ? logoPreta : logoBranca} 
+            alt="Affix FIDC Logo" 
+            className="logo-image" 
+          />
+        </Link>
       </div>
 
-      {/* 2. Links de Navegação */}
-      {/* Aplicamos a classe 'active' se o menuAberto for verdadeiro */}
+      {/* 2. Links de Navegação (Centralizados via CSS) */}
       <nav className={`navbar-links ${menuAberto ? 'active' : ''}`}>
         <ul>
-          {/* Usamos onClick={toggleMenu} aqui para fechar o menu 
-              automaticamente ao clicar em um link no mobile */}
           <li><Link to="/quem-somos" onClick={toggleMenu}>Quem Somos</Link></li>
           <li><Link to="/solucoes" onClick={toggleMenu}>Soluções</Link></li>
           <li><Link to="/contato" onClick={toggleMenu}>Contato</Link></li>
         </ul>
       </nav>
 
-      {/* 3. Botão Hambúrguer/Fechar (Controle do Menu Mobile) */}
+      {/* 3. Botão Hambúrguer */}
       <div className="navbar-toggle" onClick={toggleMenu}>
-        {/* Mostra 'X' se o menu estiver aberto, ou '☰' se estiver fechado */}
         {menuAberto ? '✕' : '☰'}
       </div>
     </header>
